@@ -1,0 +1,27 @@
+{
+  "name": "sakura",
+  "version": "1.0.0",
+  "description": "A tools to generate meetup poster",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zufardhiyaulhaq/sakura.git"
+  },
+  "keywords": [
+    "meetup",
+    "poster",
+    "generator"
+  ],
+  "author": "Zufar Dhiyaulhaq",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zufardhiyaulhaq/sakura/issues"
+  },
+  "homepage": "https://github.com/zufardhiyaulhaq/sakura#readme",
+  "dependencies": {
+    "canvas": "^2.9.0",
+    "canvas-multiline-text": "^1.0.3",
+    "canvas-txt": "^3.0.0",
+    "js-yaml": "^4.1.0"
+  }
+}

@@ -1,0 +1,21 @@
+meetup:
+  name: "Kubernetes Cloud Native Online Meetup February 2022"
+  date: "24 February 2022"
+  time: "19:00 WIB"
+  place: "Youtube"
+  registration_url: "online.kubernetescommunity.id"
+  sponsors:
+  - name: "Google"
+    image_path: "./sponsor1.png"
+  speakers:
+  - name: "Jay Lee"
+    position: "Application Innoivation Specialist"
+    company: "Microsoft"
+    title: "Developing Java apps on Azure Kubernetes Service"
+    image_path: "./speaker1.png"
+  - name: "Andika Kurniantoro"
+    position: "Staff Devops Engineer"
+    company: "Illumina Singapore"
+    title: "Simplify helm charts deployment with Helm file"
+    image_path: "./speaker2.png"
+
