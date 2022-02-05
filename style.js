@@ -1,47 +1,69 @@
-const font = "Visby CF"
-
-const sponsorStyle = {
-    fontColor: '#ffffff',
-    fontWeight: "bold",
-    fontSize: 50,
-    align: 'right',
-    marginLeft: 130,
-    marginRight: 2300,
-    marginTop: 100,
-    marginBottom: 150,
+const background = {
+    startColor: "#ffffff",
+    endColor: "#ffffff"
 }
-
 const titleStyle = {
-    fontColor: '#ffffff',
+    fontType: "OpenSans",
+    fontColor: '#000000',
     fontWeight: "bold",
     fontSize: 140,
     align: 'left',
-    marginLeft: 130,
-    marginRight: 2300,
-    marginTop: 700,
-    marginBottom: 900,
+    dx: 130,
+    dWidth: 2170,
+    dy: 700,
+    dHeight: 200,
 }
 
 const titleDescriptionStype = {
-    fontColor: '#ffffff',
-    fontWeight: "",
+    fontType: "OpenSans",
+    fontColor: '#000000',
+    fontWeight: "Regular",
     fontSize: 80,
     align: 'left',
-    marginLeft: 130,
-    marginRight: 2300,
-    marginTop: 1000,
-    marginBottom: 1080,
+    dx: 130,
+    dWidth: 2170,
+    dy: 1000,
+    dHeight: 80,
 }
 
 const urlStype = {
-    fontColor: '#ffffff',
-    fontWeight: "",
+    fontType: "OpenSans",
+    fontColor: '#000000',
+    fontWeight: "Regular",
     fontSize: 80,
     align: 'left',
-    marginLeft: 130,
-    marginRight: 2300,
-    marginTop: 1100,
-    marginBottom: 1180,
+    dx: 130,
+    dWidth: 2170,
+    dy: 1100,
+    dHeight: 80,
 }
 
-module.exports = { font, titleStyle, titleDescriptionStype, urlStype, sponsorStyle };
+const sponsorStyle = {
+    fontType: "OpenSans",
+    fontColor: '#000000',
+    fontWeight: "bold",
+    fontSize: 50,
+    align: 'left',
+    dx: 130,
+    dWidth: 2170,
+    dy: 100,
+    dHeight: 50,
+}
+
+const sponsorImageStype = {
+    width: 270,
+    height: 180,
+    padding: 30
+}
+
+const sponsorImagesStype = {
+    dx: 130,
+    dy: 200,
+    horizontalDivider: 4,
+    verticalDivider: 2,
+}
+
+sponsorImagesStype.dWidth = (sponsorImageStype.width * sponsorImagesStype.horizontalDivider) + ((sponsorImagesStype.horizontalDivider - 1) * sponsorImageStype.padding)
+sponsorImagesStype.dHeight = (sponsorImageStype.height * sponsorImagesStype.verticalDivider) + ((sponsorImagesStype.verticalDivider - 1) * sponsorImageStype.padding)
+
+module.exports = { background, titleStyle, titleDescriptionStype, urlStype, sponsorStyle, sponsorImageStype, sponsorImagesStype };

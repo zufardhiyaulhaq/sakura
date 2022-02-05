@@ -25,8 +25,8 @@ const validateConfig = function(config) {
   }
 
   if (config.meetup.sponsors) {
-    if (config.meetup.sponsors.length > 2) {
-      throw "Sponsor more than 2 is not supported"
+    if (config.meetup.sponsors.length > 8) {
+      throw "Sponsor more than 8 is not supported"
     }
   }
 }

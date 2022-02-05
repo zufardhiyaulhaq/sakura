@@ -1,7 +1,11 @@
-const { createCanvas } = require('canvas')
+const { registerFont, createCanvas } = require('canvas')
 const fs = require('fs');
 const { Meetup } = require('./builder');
 const { getConfig } = require("./config");
+const { background } = require('./style')
+
+registerFont('./assets/fonts/OpenSans-Regular.ttf', { family: 'OpenSans', weight: "regular"})
+registerFont('./assets/fonts/OpenSans-Bold.ttf', { family: 'OpenSans', weight: "bold"})
 
 const config = getConfig()
 const width = 2480
@@ -11,8 +15,8 @@ const canvas = createCanvas(width, height)
 const context = canvas.getContext('2d')
 
 gradient = context.createLinearGradient(0, 0, width, height);
-gradient.addColorStop(0.0,"#dd166b");
-gradient.addColorStop(1.0,"#412a62");
+gradient.addColorStop(0.0, background.startColor);
+gradient.addColorStop(1.0,background.endColor);
 context.fillStyle = gradient;
 context.fillRect(0, 0, width, height); 
 
@@ -27,7 +31,10 @@ if (config.meetup.sponsors) {
     }
 }
 
-meetup.build()
+const build = async function() {
+    await meetup.build()
+    const buffer = canvas.toBuffer('image/png')
+    fs.writeFileSync('./test.png', buffer)
+}
 
-const buffer = canvas.toBuffer('image/png')
-fs.writeFileSync('./test.png', buffer)
+build()
