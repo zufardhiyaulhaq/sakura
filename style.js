@@ -11,7 +11,7 @@ const titleStyle = {
     vAlign: 'middle',
     dx: 130,
     dWidth: 2170,
-    dy: 700,
+    dy: 600,
     dHeight: 200,
 }
 
@@ -24,7 +24,7 @@ const titleDescriptionStype = {
     vAlign: 'middle',
     dx: 130,
     dWidth: 2170,
-    dy: 1000,
+    dy: 900,
     dHeight: 70,
 }
 
@@ -37,7 +37,7 @@ const urlStype = {
     vAlign: 'middle',
     dx: 130,
     dWidth: 2170,
-    dy: 1100,
+    dy: 1000,
     dHeight: 70,
 }
 
@@ -69,7 +69,7 @@ const sponsorBox = {
 
 const speakerBox = {
     dx: 130,
-    dy: 1280,
+    dy: 1180,
     horizontalDivider: 1,
     verticalDivider: 4,
 }
@@ -129,7 +129,7 @@ const organizerStyle = {
     vAlign: 'middle',
     dx: 130,
     dWidth: 2170,
-    dy: 3100,
+    dy: 3000,
     dHeight: 50,
 }
 
@@ -141,7 +141,7 @@ const organizerImageStyle = {
 
 const organizerBox = {
     dx: 130,
-    dy: 3200,
+    dy: 3100,
     horizontalDivider: 4,
     verticalDivider: 1,
 }
