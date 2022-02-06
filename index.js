@@ -24,6 +24,8 @@ const meetup = new Meetup(context)
     .setTitle(config.meetup.name)
     .setDescription(config.meetup.date, config.meetup.time, config.meetup.place)
     .setURL(config.meetup.registration_url)
+    .setSpeakers(config.meetup.speakers)
+    .setOrganizers(config.meetup.organizers)
 
 if (config.meetup.sponsors) {
     if (config.meetup.sponsors.length > 0) {

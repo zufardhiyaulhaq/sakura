@@ -1,6 +1,20 @@
 const canvasTxt = require('canvas-txt').default
-const { loadImage } = require('canvas')
-const { titleStyle, titleDescriptionStype, urlStype, sponsorStyle, sponsorImageStype, sponsorImagesStype } = require('./style')
+const {
+    loadImage
+} = require('canvas')
+const {
+    titleStyle,
+    titleDescriptionStype,
+    urlStype,
+    sponsorStyle,
+    sponsorImageStyle,
+    sponsorBox,
+    speakerStyle,
+    speakerBox,
+    organizerStyle,
+    organizerImageStyle,
+    organizerBox
+} = require('./style')
 
 class Meetup {
     constructor(context) {
@@ -9,8 +23,10 @@ class Meetup {
         this.description = undefined;
         this.url = undefined;
         this.sponsors = undefined;
-      }
-    
+        this.speakers = undefined;
+        this.organizers = undefined;
+    }
+
     setTitle(title) {
         this.title = title
         return this
@@ -31,8 +47,20 @@ class Meetup {
         return this
     }
 
+    setSpeakers(speakers) {
+        this.speakers = speakers
+        return this
+    }
+
+    setOrganizers(organizers) {
+        this.organizers = organizers
+        return this
+    }
+
     async build() {
         this.buildDescription()
+        await this.buildSpeakers()
+        await this.buildOrganizers()
 
         if (this.sponsors) {
             await this.buildSponsors()
@@ -46,26 +74,87 @@ class Meetup {
     }
 
     async buildSponsors() {
-        drawText(this.context, "In Partnership with", sponsorStyle)
-        
-        var sponsorCount = 0
+        drawText(this.context, "In Partnership With", sponsorStyle)
 
-        for (var y = 0; y < sponsorImagesStype.verticalDivider; y++) {
-            for (var x = 0; x < sponsorImagesStype.horizontalDivider; x++) {
+        var sponsorCount = 0
+        for (var y = 0; y < sponsorBox.verticalDivider; y++) {
+            for (var x = 0; x < sponsorBox.horizontalDivider; x++) {
                 if (this.sponsors.length > sponsorCount) {
-                    const dx = sponsorImagesStype.dx + (sponsorImageStype.width * x) + (sponsorImageStype.padding * x)
-                    const dy = sponsorImagesStype.dy + (sponsorImageStype.height * y) + (sponsorImageStype.padding * y) 
+                    const dx = sponsorBox.dx + (sponsorImageStyle.width * x) + (sponsorImageStyle.padding * x)
+                    const dy = sponsorBox.dy + (sponsorImageStyle.height * y) + (sponsorImageStyle.padding * y)
 
                     await drawImage(
                         this.context,
                         this.sponsors[sponsorCount].image_path,
                         dx,
                         dy,
-                        sponsorImageStype.width,
-                        sponsorImageStype.height
+                        sponsorImageStyle.width,
+                        sponsorImageStyle.height
                     )
 
                     sponsorCount++
+                }
+            }
+        }
+    }
+
+    async buildOrganizers() {
+        drawText(this.context, "Organized By", organizerStyle)
+
+        var organizerCount = 0
+        for (var y = 0; y < organizerBox.verticalDivider; y++) {
+            for (var x = 0; x < organizerBox.horizontalDivider; x++) {
+                if (this.organizers.length > organizerCount) {
+                    const dx = organizerBox.dx + (organizerImageStyle.width * x) + (organizerImageStyle.padding * x)
+                    const dy = organizerBox.dy + (organizerImageStyle.height * y) + (organizerImageStyle.padding * y)
+
+                    await drawImage(
+                        this.context,
+                        this.organizers[organizerCount].image_path,
+                        dx,
+                        dy,
+                        organizerImageStyle.width,
+                        organizerImageStyle.height
+                    )
+
+                    organizerCount++
+                }
+            }
+        }
+    }
+
+    async buildSpeakers() {
+        var speakerCount = 0
+        for (var y = 0; y < speakerBox.verticalDivider; y++) {
+            for (var x = 0; x < speakerBox.horizontalDivider; x++) {
+                if (this.speakers.length > speakerCount) {
+                    const dxImage = speakerBox.dx + (speakerStyle.image.width * x) + (speakerStyle.padding * x)
+                    const dyImage = speakerBox.dy + (speakerStyle.image.height * y) + (speakerStyle.padding * y)
+                    await drawImage(
+                        this.context,
+                        this.speakers[speakerCount].image_path,
+                        dxImage,
+                        dyImage,
+                        speakerStyle.image.width,
+                        speakerStyle.image.height
+                    )
+
+                    const nameStyle = speakerStyle.name
+                    nameStyle.dx = dxImage + speakerStyle.image.width + (3 * speakerStyle.padding)
+                    nameStyle.dy = dyImage + speakerStyle.padding
+                    drawText(this.context, this.speakers[speakerCount].name, nameStyle)
+
+                    const companyStyle = speakerStyle.company
+                    companyStyle.dx = dxImage + speakerStyle.image.width + (3 * speakerStyle.padding)
+                    companyStyle.dy = nameStyle.dy + nameStyle.dHeight + speakerStyle.padding
+                    drawText(this.context, `${this.speakers[speakerCount].position} @ ${this.speakers[speakerCount].company}`, companyStyle)
+
+                    const titleStyle = speakerStyle.title
+                    titleStyle.dx = dxImage + speakerStyle.image.width + (3 * speakerStyle.padding)
+                    titleStyle.dy = companyStyle.dy + companyStyle.dHeight + speakerStyle.padding
+                    drawText(this.context, this.speakers[speakerCount].title, titleStyle)
+
+                    speakerCount++
                 }
             }
         }
@@ -76,6 +165,7 @@ const drawText = (ctx, text, style) => {
     ctx.fillStyle = style.fontColor
     canvasTxt.font = style.fontType
     canvasTxt.align = style.align
+    canvasTxt.vAlign = style.vAlign
     canvasTxt.fontSize = style.fontSize
     canvasTxt.fontWeight = style.fontWeight
     canvasTxt.lineHeight = style.fontSize + (style.fontSize * 0.1)
@@ -99,4 +189,6 @@ const drawImage = async (ctx, image_path, dx, dy, width, height) => {
     }
 }
 
-module.exports = { Meetup };
+module.exports = {
+    Meetup
+};
