@@ -75,8 +75,8 @@ const speakerBox = {
 }
 
 const speakerImageStyle = {
-    width: 384,
-    height: 384,
+    width: 512,
+    height: 512,
 }
 
 const speakerNameStyle = {

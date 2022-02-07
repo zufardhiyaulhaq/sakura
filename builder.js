@@ -129,7 +129,7 @@ class Meetup {
             for (var x = 0; x < speakerBox.horizontalDivider; x++) {
                 if (this.speakers.length > speakerCount) {
                     const dxImage = speakerBox.dx + (speakerStyle.image.width * x) + (speakerStyle.padding * x)
-                    const dyImage = speakerBox.dy + (speakerStyle.image.height * y) + (speakerStyle.padding * y)
+                    const dyImage = speakerBox.dy + (speakerStyle.image.height * y) + 2 * (speakerStyle.padding * y)
                     await drawImage(
                         this.context,
                         this.speakers[speakerCount].image_path,
