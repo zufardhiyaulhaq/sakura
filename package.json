@@ -2,7 +2,7 @@
   "name": "sakura",
   "version": "1.0.0",
   "description": "A tools to generate meetup poster",
-  "main": "index.js",
+  "main": "cli.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zufardhiyaulhaq/sakura.git"
@@ -23,6 +23,7 @@
     "canvas-multiline-text": "^1.0.3",
     "canvas-object-fit": "^0.8.1",
     "canvas-txt": "^3.0.0",
+    "commander": "^10.0.0",
     "js-yaml": "^4.1.0",
     "object-fit-images": "^3.2.4",
     "sharp": "^0.30.0"

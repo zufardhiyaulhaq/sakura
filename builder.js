@@ -4,8 +4,8 @@ const {
 } = require('canvas')
 const {
     titleStyle,
-    titleDescriptionStype,
-    urlStype,
+    titleDescriptionStyle,
+    urlStyle,
     sponsorStyle,
     sponsorImageStyle,
     sponsorBox,
@@ -69,8 +69,8 @@ class Meetup {
 
     buildDescription() {
         drawText(this.context, this.title, titleStyle)
-        drawText(this.context, this.description, titleDescriptionStype)
-        drawText(this.context, this.url, urlStype)
+        drawText(this.context, this.description, titleDescriptionStyle)
+        drawText(this.context, this.url, urlStyle)
     }
 
     async buildSponsors() {
