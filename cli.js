@@ -1,24 +1,53 @@
-
-const { program, Option } = require('commander');
-const { generate } = require('./sakura');
+const { program, Option } = require("commander");
+const { generate } = require("./sakura");
+const { getMeetupConfig } = require("./config");
+const { Style } = require("./styles/builder");
 
 program
-  .name('sakura')
-  .description('Automate community poster creation')
-  .version('0.1.0');
+  .name("sakura")
+  .description("Automate community poster creation")
+  .version("0.1.0");
 
-const canvasType = new Option('--canvas-type <type>', 'canvas type').choices(['flayer_potrait', 'flayer_landscape', 'square']).default('flayer_potrait')
-const fontFamily = new Option('--font-family <family>', 'font family').choices(['opensans']).default('opensans')
-const colourCombination = new Option('--colour-combination <combination>', 'colour combination').choices(['teal']).default('teal')
-
-program.command('generate')
-  .description('Generate image')
-  .addOption(canvasType)
-  .addOption(fontFamily)
-  .addOption(colourCombination)
+program
+  .command("generate")
+  .description("Generate image")
+  .addOption(
+    new Option("--canvas-type <type>", "canvas type")
+      .choices(["flayer_potrait"])
+      .default("flayer_potrait")
+  )
+  .addOption(
+    new Option("--font-family <family>", "font family")
+      .choices(["opensans"])
+      .default("opensans")
+  )
+  .addOption(
+    new Option("--colour-combination <combination>", "colour combination")
+      .choices(["teal"])
+      .default("teal")
+  )
+  .addOption(
+    new Option("--meetup-config <file>", "meetup configuration file").default(
+      "meetup.yaml"
+    )
+  )
+  .addOption(
+    new Option("--output-file <file>", "output file name").default("meetup.png")
+  )
   .action((str, options) => {
-    console.log(str)
-    generate()
+    meetupConfig = getMeetupConfig(str.meetupConfig);
+
+    const styleConfig = new Style()
+      .setCanvasType(str.canvasType)
+      .setFontFamily(str.fontFamily)
+      .setColourCombination(str.colourCombination)
+      .setOrganizerNumber(meetupConfig.organizers.length)
+      .setSpeakerNumber(meetupConfig.speakers.length)
+      .setSponsorNumber(meetupConfig.sponsors.length)
+      .validate()
+      .build()
+
+    generate(meetupConfig, styleConfig, str.outputFile);
   });
 
 program.parse();

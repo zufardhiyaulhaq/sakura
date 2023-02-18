@@ -1,40 +1,30 @@
-const yaml = require('js-yaml');
-const fs = require('fs');
+const yaml = require("js-yaml");
+const {readFileSync} = require("fs");
 
-const getConfig = function () {
-  var config = {}
+const getMeetupConfig = function (configPath = "meetup.yaml") {
+  var config = {};
 
   try {
-    config = yaml.load(fs.readFileSync('meetup.yaml', 'utf8'));
-    validateConfig(config)
+    config = yaml.load(readFileSync(configPath, "utf8"));
+    validateMeetupConfig(config);
   } catch (e) {
     console.log(e);
     process.exit(1);
   }
 
-  return config
-}
+  return config;
+};
 
-const validateConfig = function (config) {
-  if (!config.meetup.speakers) {
-    throw "Please fill the speakers"
+const validateMeetupConfig = function (config) {
+  if (!config.speakers) {
+    throw "Please fill the speakers";
   }
 
-  if (config.meetup.speakers.length === 0) {
-    throw "Please fill the speakers"
+  if (config.speakers.length === 0) {
+    throw "Please fill the speakers";
   }
-
-  if (config.meetup.speakers.length > 4) {
-    throw "Speakers more than 4 is not supported"
-  }
-
-  if (config.meetup.sponsors) {
-    if (config.meetup.sponsors.length > 4) {
-      throw "Sponsor more than 4 is not supported"
-    }
-  }
-}
+};
 
 module.exports = {
-  getConfig
+  getMeetupConfig,
 };
