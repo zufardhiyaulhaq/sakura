@@ -4,7 +4,13 @@ const flayerPotrait = {
   height: 3508,
   maxSponsorNumber: 4,
   maxSpeakerNumber: 4,
-  maxOrganizerNumber: 4
+  maxOrganizerNumber: 4,
+  speakerSizeMultiplier: {
+    "4": 3,
+    "3": 4,
+    "2": 5,
+    "1": 6,
+  }
 };
 
 const flayerLandscape = {

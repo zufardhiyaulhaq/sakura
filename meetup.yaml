@@ -24,11 +24,6 @@ speakers:
   company: "Gojek"
   title: "Istio Mesh 101"
   image_path: "./assets/images/speakers/speaker1.png"
-- name: "Charles A Wibowo"
-  position: "Staff Devops Engineer"
-  company: "Gojek"
-  title: "Building Developer Experience 101"
-  image_path: "./assets/images/speakers/speaker2.png"
 organizers:
 - name: Cloud Native Indonesia
   image_path: "./assets/images/organizers/cloud-native-indonesia-text.png"

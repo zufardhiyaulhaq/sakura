@@ -1,6 +1,7 @@
 const { flayerPotrait, flayerLandscape, square } = require("./canvas");
 const { openSans } = require("./font");
 const { teal } = require("./colour");
+const { NewFlayerPotraitCanvasStyle } = require("./canvas_style/flayer_potrait");
 
 class Style {
   constructor() {
@@ -88,6 +89,7 @@ class Style {
   build() {
     var style = {
       canvasType: this.canvasType,
+      canvasStyle: NewFlayerPotraitCanvasStyle(this.canvasType.speakerSizeMultiplier[this.SpeakerNumber], this.fontFamily, this.colourCombination),
       fontFamily: this.fontFamily,
       colourCombination: this.colourCombination
     }
@@ -97,5 +99,5 @@ class Style {
 }
 
 module.exports = {
-  Style,
+  Style
 };

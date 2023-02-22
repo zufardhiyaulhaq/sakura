@@ -3,10 +3,10 @@ const { writeFileSync } = require("fs");
 const { Meetup } = require("./builder");
 
 const generate = (meetupConfig, styleConfig, outputFile) => {
-  for (fontFamily of styleConfig.fontFamily) {
-    registerFont(fontFamily.path, {
-      family: fontFamily.fontFace.family,
-      weight: fontFamily.fontFace.weight,
+  for (font of styleConfig.fontFamily.fonts) {
+    registerFont(font.path, {
+      family: styleConfig.fontFamily.family,
+      weight: font.weight,
     });
   }
 
@@ -22,7 +22,7 @@ const generate = (meetupConfig, styleConfig, outputFile) => {
   canvasContext.fillStyle = gradient;
   canvasContext.fillRect(0, 0, width, height);
 
-  const meetup = new Meetup(canvasContext)
+  const meetup = new Meetup(canvasContext, styleConfig.canvasStyle)
     .setTitle(meetupConfig.name)
     .setDescription(meetupConfig.date, meetupConfig.time, meetupConfig.place)
     .setURL(meetupConfig.registration_url)
