@@ -1,7 +1,7 @@
 const { program, Option } = require("commander");
-const { generate } = require("./sakura");
-const { getMeetupConfig } = require("./config");
-const { Style } = require("./styles/styles");
+const { generate } = require("./src/sakura");
+const { getMeetupConfig } = require("./src/config");
+const { Style } = require("./src/styles/styles");
 
 program
   .name("sakura")

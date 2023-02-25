@@ -1,11 +1,11 @@
 const openSans = {
   fonts: [
     {
-      path: "./assets/fonts/OpenSans-Regular.ttf",
+      path: "./src/assets/fonts/OpenSans-Regular.ttf",
       weight: "regular",
     },
     {
-      path: "./assets/fonts/OpenSans-Bold.ttf",
+      path: "./src/assets/fonts/OpenSans-Bold.ttf",
       weight: "bold",
     },
   ],
