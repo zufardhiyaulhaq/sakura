@@ -6,7 +6,7 @@ A service that help community organizer create meetup poster.
 - populate all the information in the meetup.yaml and copy the required image for sponsors and speakers
 - to generate the poster, run
 ```
-$ node cli.js generate
+$ node cli.js generate --meetup-config ./example/meetup.yaml --output-file ./example/meetup.png
 ```
 
 You can see all available options with

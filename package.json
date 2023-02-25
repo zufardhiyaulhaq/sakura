@@ -27,5 +27,8 @@
     "js-yaml": "^4.1.0",
     "object-fit-images": "^3.2.4",
     "sharp": "^0.30.0"
+  },
+  "devDependencies": {
+    "ts-migrate": "^0.1.35"
   }
 }

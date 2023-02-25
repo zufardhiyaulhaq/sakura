@@ -1,7 +1,7 @@
 const { program, Option } = require("commander");
 const { generate } = require("./sakura");
 const { getMeetupConfig } = require("./config");
-const { Style } = require("./styles/builder");
+const { Style } = require("./styles/styles");
 
 program
   .name("sakura")
@@ -36,6 +36,7 @@ program
   )
   .action((str, options) => {
     meetupConfig = getMeetupConfig(str.meetupConfig);
+    console.log(meetupConfig)
 
     const styleConfig = new Style()
       .setCanvasType(str.canvasType)

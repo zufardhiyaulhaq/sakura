@@ -1,7 +1,6 @@
-const { flayerPotrait, flayerLandscape, square } = require("./canvas");
+const { flayerPotrait, flayerLandscape, square, NewFlayerPotraitCanvasStyle } = require("./canvas/canvas");
 const { openSans } = require("./font");
 const { teal } = require("./colour");
-const { NewFlayerPotraitCanvasStyle } = require("./canvas_style/flayer_potrait");
 
 class Style {
   constructor() {

@@ -13,7 +13,7 @@ const generate = (meetupConfig, styleConfig, outputFile) => {
   const width = styleConfig.canvasType.width;
   const height = styleConfig.canvasType.height;
 
-  const canvas = createCanvas(width, height);
+  const canvas = createCanvas(width, height, type="image");
   const canvasContext = canvas.getContext("2d");
 
   gradient = canvasContext.createLinearGradient(0, 0, width, height);
