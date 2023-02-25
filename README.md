@@ -3,24 +3,29 @@
 A service that help community organizer create meetup poster.
 
 ### Getting Started
+- get all of the dependencies
+```
+$ npm install
+```
 - populate all the information in the meetup.yaml and copy the required image for sponsors and speakers
 - to generate the poster, run
 ```
-$ node index.js generate --meetup-config ./example/meetup.yaml --output-file ./example/meetup.png
+$ ts-node index.ts generate --meetup-config ./example/meetup.yaml --output-file ./example/meetup.png
 ```
 
 You can see all available options with
 ```
-$ node index.js generate --help
-Usage: sakura generate [options]
+$ ts-node index.ts --help
+Usage: sakura [options] [command]
 
-Generate image
+Automate community poster creation
 
 Options:
-  --canvas-type <type>                canvas type (choices: "flayer_potrait", default: "flayer_potrait")
-  --font-family <family>              font family (choices: "opensans", default: "opensans")
-  --colour-combination <combination>  colour combination (choices: "teal", default: "teal")
-  --meetup-config <file>              meetup configuration file (default: "meetup.yaml")
-  --output-file <file>                output file name (default: "meetup.png")
-  -h, --help                          display help for command
+  -V, --version       output the version number
+  -h, --help          display help for command
+
+Commands:
+  generate [options]  Generate image
+  server [options]    Run sakura server
+  help [command]      display help for command
 ```

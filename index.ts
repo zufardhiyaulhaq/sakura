@@ -1,7 +1,8 @@
-const { program, Option } = require("commander");
-const { generate } = require("./src/cmd/generate");
-const { getMeetupConfig } = require("./src/configs/configs");
-const { Style } = require("./src/styles/styles");
+import { program, Option } from "commander";
+import { generate } from "./src/cmd/generate";
+import { getMeetupConfig } from "./src/configs/configs";
+import { Style } from "./src/styles/styles";
+import { start } from "./src/cmd/server";
 
 program
   .name("sakura")
@@ -35,8 +36,8 @@ program
     new Option("--output-file <file>", "output file name").default("meetup.png")
   )
   .action((str, options) => {
-    meetupConfig = getMeetupConfig(str.meetupConfig);
-    console.log(meetupConfig)
+    let meetupConfig = getMeetupConfig(str.meetupConfig);
+    console.log(meetupConfig);
 
     const styleConfig = new Style()
       .setCanvasType(str.canvasType)
@@ -46,9 +47,20 @@ program
       .setSpeakerNumber(meetupConfig.speakers.length)
       .setSponsorNumber(meetupConfig.sponsors.length)
       .validate()
-      .build()
+      .build();
 
     generate(meetupConfig, styleConfig, str.outputFile);
+  });
+
+program
+  .command("server")
+  .description("Run sakura server")
+  .addOption(
+    new Option("--port <number>", "port")
+      .default(8080)
+  )
+  .action((str, options) => {
+    start(str.port);
   });
 
 program.parse();
