@@ -1,14 +1,16 @@
 import * as env from "env-var";
 
 export enum ImageHosting {
-  freeImageHost = "freeimagehost",
   minio = "minio",
 }
 export interface Settings {
   sakuraServerIP: string;
   sakuraServerPort: number;
   sakuraImageHosting: ImageHosting;
-  sakuraFreeImageHostAPIKey: string;
+  sakuraMinioAccessKey: string;
+  sakuraMinioSecretKey: string;
+  sakuraMinioEndpoint: string;
+  sakuraMinioPort: number;
 }
 
 export const getSettings = function (): Settings {
@@ -26,13 +28,28 @@ export const getSettings = function (): Settings {
   settings.sakuraImageHosting = env
     .get("SAKURA_IMAGE_HOSTING")
     .required()
-    .asEnum<ImageHosting>([ImageHosting.freeImageHost, ImageHosting.minio]);
+    .asEnum<ImageHosting>([ImageHosting.minio]);
 
-  if (settings.sakuraImageHosting == ImageHosting.freeImageHost) {
-    settings.sakuraFreeImageHostAPIKey = env
-      .get("SAKURA_FREE_IMAGE_HOST_API_KEY")
+  if (settings.sakuraImageHosting == ImageHosting.minio) {
+    settings.sakuraMinioAccessKey = env
+      .get("SAKURA_MINIO_ACCESS_KEY")
       .required()
       .asString();
+
+      settings.sakuraMinioAccessKey = env
+      .get("SAKURA_MINIO_SECRET_KEY")
+      .required()
+      .asString();
+
+      settings.sakuraMinioEndpoint = env
+      .get("SAKURA_MINIO_ENDPOINT")
+      .required()
+      .asString();
+
+      settings.sakuraMinioPort = env
+      .get("SAKURA_MINIO_PORT")
+      .required()
+      .asPortNumber();
   }
 
   return settings;

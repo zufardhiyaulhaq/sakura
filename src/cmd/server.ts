@@ -1,6 +1,8 @@
 import express from "express";
 import { Settings } from "../settings/settings";
-import { Router as v1Router } from "../routes/v1/routes";
+import { v1GenerateRequest, v1GenerateResponse } from "../configs/configs";
+import { generate } from "../service/v1/generate/generate";
+
 import { serve, setup } from "swagger-ui-express";
 
 const swaggerJsdoc = require("swagger-jsdoc");
@@ -16,12 +18,37 @@ export const start = function (settings: Settings) {
         version: "1.0.0",
       },
     },
-    apis: ['**/*.ts'],
+    apis: ["**/*.ts"],
   };
   const specs = swaggerJsdoc(options);
   app.use("/api-docs", serve, setup(specs, { explorer: true }));
 
-  app.use("/v1", express.json(), v1Router);
+  /**
+   * @openapi
+   * /v1/generate:
+   *   post:
+   *     description: generate meetup poster
+   *     operationId: v1Generate
+   *     requestBody:
+   *       description: meetup data
+   *       content:
+   *         application/json:
+   *           schema:
+   *             $ref: '#/components/schemas/v1GenerateRequest'
+   *       required: true
+   *     responses:
+   *       200:
+   *         description: the created meetup poster
+   *         content:
+   *           application/json:
+   *             schema:
+   *               $ref: '#/components/schemas/v1GenerateResponse'
+   */
+  app.use("/v1", express.json(), async function (request, response) {
+    let config: v1GenerateRequest = request.body;
+    let responseBody: v1GenerateResponse = await generate(config, settings);
+    response.json(responseBody);
+  });
 
   app.listen(settings.sakuraServerPort, settings.sakuraServerIP, () => {
     return console.log(

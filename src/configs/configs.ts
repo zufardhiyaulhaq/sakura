@@ -13,10 +13,10 @@ import { readFileSync } from "fs";
  *       properties:
  *         name:
  *           type: string
- *           example: foo
+ *           example: Istio
  *         image_path:
  *           type: string
- *           example: foo
+ *           example: https://istio.io/v1.12/img/istio-whitelogo-bluebackground-framed.svg
  */
 export interface MeetupSponsor {
   name: string;
@@ -38,19 +38,19 @@ export interface MeetupSponsor {
  *       properties:
  *         name:
  *           type: string
- *           example: foo
+ *           example: Dina Setyo
  *         position:
  *           type: string
- *           example: bar
+ *           example: Cloud Platform Engineer
  *         company:
  *           type: string
- *           example: foo
+ *           example: Gojek
  *         title:
  *           type: string
- *           example: bar
+ *           example: Building Developer Experience 101
  *         image_path:
  *           type: string
- *           example: foo
+ *           example: https://cdn.idntimes.com/content-images/post/20200317/5-c732fe8f39e5683aeb3a01b272e1851e.jpg
  */
 export interface MeetupSpeaker {
   name: string;
@@ -72,10 +72,10 @@ export interface MeetupSpeaker {
  *       properties:
  *         name:
  *           type: string
- *           example: foo
+ *           example: Cloud Native Indonesia
  *         image_path:
  *           type: string
- *           example: foo
+ *           example: https://istio.io/v1.12/img/istio-whitelogo-bluebackground-framed.svg
  */
 export interface MeetupOrganizer {
   name: string;
@@ -100,19 +100,19 @@ export interface MeetupOrganizer {
  *      properties:
  *        name:
  *          type: string
- *          example: bar
+ *          example: Kubernetes Cloud Native Online Meetup February 2022
  *        date:
  *          type: string
- *          example: foo
+ *          example: 24 February 2022
  *        time:
  *          type: string
- *          example: foo
+ *          example: 19:00 WIB
  *        place:
  *          type: string
- *          example: bar
+ *          example: Youtube
  *        registration_url:
  *          type: string
- *          example: foo
+ *          example: online.kubernetescommunity.id
  *        sponsors:
  *          type: array
  *          items:
@@ -151,13 +151,13 @@ export interface MeetupConfig {
  *      properties:
  *        canvas_type:
  *          type: string
- *          example: bar
+ *          example: flayer_potrait
  *        font_family:
  *          type: string
- *          example: foo
+ *          example: opensans
  *        colour_combination:
  *          type: string
- *          example: foo
+ *          example: teal
  *        meetup:
  *          type: object
  *          $ref: '#/components/schemas/Meetup'
