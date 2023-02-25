@@ -6,8 +6,10 @@ registration_url: "online.kubernetescommunity.id"
 sponsors:
 - name: "AWS"
   image_path: "./example/images/sponsors/sponsor1.png"
-- name: "Google Cloud"
-  image_path: "./example/images/sponsors/sponsor2.png"
+- name: "Istio"
+  image_path: "https://www.circonus.com/wp-content/uploads/2017/12/istioAdapter-new.png"
+- name: "Istio"
+  image_path: "https://istio.io/v1.12/img/istio-whitelogo-bluebackground-framed.svg"
 speakers:
 - name: "Dina Setyo"
   position: "Cloud Platform Engineer"

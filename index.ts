@@ -3,6 +3,7 @@ import { generate } from "./src/cmd/generate";
 import { getMeetupConfig } from "./src/configs/configs";
 import { Style } from "./src/styles/styles";
 import { start } from "./src/cmd/server";
+import { getSettings } from "./src/settings/settings"
 
 program
   .name("sakura")
@@ -37,7 +38,6 @@ program
   )
   .action((str, options) => {
     let meetupConfig = getMeetupConfig(str.meetupConfig);
-    console.log(meetupConfig);
 
     const styleConfig = new Style()
       .setCanvasType(str.canvasType)
@@ -55,12 +55,9 @@ program
 program
   .command("server")
   .description("Run sakura server")
-  .addOption(
-    new Option("--port <number>", "port")
-      .default(8080)
-  )
   .action((str, options) => {
-    start(str.port);
+    let settings = getSettings()
+    start(settings);
   });
 
 program.parse();

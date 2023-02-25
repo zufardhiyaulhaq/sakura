@@ -1,8 +1,17 @@
-const canvasTxt = require("canvas-txt").default;
-const { loadImage } = require("canvas");
+import canvasTxt from "canvas-txt";
+import { loadImage, CanvasRenderingContext2D } from "canvas";
 
-class Meetup {
-  constructor(canvas, style) {
+export class Meetup {
+  canvas: CanvasRenderingContext2D;
+  style: any;
+  title: string;
+  description: string;
+  url: string;
+  sponsors: any;
+  speakers: any;
+  organizers: any;
+
+  constructor(canvas: CanvasRenderingContext2D, style) {
     this.canvas = canvas;
     this.style = style;
     this.title = undefined;
@@ -13,17 +22,17 @@ class Meetup {
     this.organizers = undefined;
   }
 
-  setTitle(title) {
+  setTitle(title: string) {
     this.title = title;
     return this;
   }
 
-  setDescription(date, time, location) {
+  setDescription(date: string, time: string, location: string) {
     this.description = date + " | " + time + " | " + location;
     return this;
   }
 
-  setURL(url) {
+  setURL(url: string) {
     this.url = url;
     return this;
   }
@@ -126,8 +135,14 @@ class Meetup {
     for (var y = 0; y < this.style.speakerBox.verticalDivider; y++) {
       for (var x = 0; x < this.style.speakerBox.horizontalDivider; x++) {
         if (this.speakers.length > speakerCount) {
-          const dxImage = this.style.speakerBox.dx + this.style.speakerStyle.image.width * x + this.style.speakerStyle.padding * x;
-          const dyImage = this.style.speakerBox.dy + this.style.speakerStyle.image.height * y + 2 * (this.style.speakerStyle.padding * y);
+          const dxImage =
+            this.style.speakerBox.dx +
+            this.style.speakerStyle.image.width * x +
+            this.style.speakerStyle.padding * x;
+          const dyImage =
+            this.style.speakerBox.dy +
+            this.style.speakerStyle.image.height * y +
+            2 * (this.style.speakerStyle.padding * y);
           await drawImage(
             this.canvas,
             this.speakers[speakerCount].image_path,
@@ -138,13 +153,20 @@ class Meetup {
           );
 
           const nameStyle = this.style.speakerStyle.name;
-          nameStyle.dx = dxImage + this.style.speakerStyle.image.width + 3 * this.style.speakerStyle.padding;
+          nameStyle.dx =
+            dxImage +
+            this.style.speakerStyle.image.width +
+            3 * this.style.speakerStyle.padding;
           nameStyle.dy = dyImage + this.style.speakerStyle.padding;
           drawText(this.canvas, this.speakers[speakerCount].name, nameStyle);
 
           const companyStyle = this.style.speakerStyle.company;
-          companyStyle.dx = dxImage + this.style.speakerStyle.image.width + 3 * this.style.speakerStyle.padding;
-          companyStyle.dy = nameStyle.dy + nameStyle.dHeight + this.style.speakerStyle.padding;
+          companyStyle.dx =
+            dxImage +
+            this.style.speakerStyle.image.width +
+            3 * this.style.speakerStyle.padding;
+          companyStyle.dy =
+            nameStyle.dy + nameStyle.dHeight + this.style.speakerStyle.padding;
           drawText(
             this.canvas,
             `${this.speakers[speakerCount].position} @ ${this.speakers[speakerCount].company}`,
@@ -152,8 +174,14 @@ class Meetup {
           );
 
           const titleStyle = this.style.speakerStyle.title;
-          titleStyle.dx = dxImage + this.style.speakerStyle.image.width + 3 * this.style.speakerStyle.padding;
-          titleStyle.dy = companyStyle.dy + companyStyle.dHeight + this.style.speakerStyle.padding;
+          titleStyle.dx =
+            dxImage +
+            this.style.speakerStyle.image.width +
+            3 * this.style.speakerStyle.padding;
+          titleStyle.dy =
+            companyStyle.dy +
+            companyStyle.dHeight +
+            this.style.speakerStyle.padding;
           drawText(this.canvas, this.speakers[speakerCount].title, titleStyle);
 
           speakerCount++;
@@ -163,7 +191,7 @@ class Meetup {
   }
 }
 
-const drawText = (ctx, text, style) => {
+const drawText = (ctx: any, text: string, style: any) => {
   ctx.fillStyle = style.fontColor;
   canvasTxt.font = style.fontType;
   canvasTxt.align = style.align;
@@ -181,7 +209,14 @@ const drawText = (ctx, text, style) => {
   );
 };
 
-const drawImage = async (ctx, image_path, dx, dy, width, height) => {
+const drawImage = async (
+  ctx: CanvasRenderingContext2D,
+  image_path: string | Buffer,
+  dx: number,
+  dy: number,
+  width: number,
+  height: number
+) => {
   const image = await loadImage(image_path);
   var scale = Math.min(width / image.width, height / image.height);
   ctx.drawImage(image, dx, dy, image.width * scale, image.height * scale);
@@ -189,8 +224,4 @@ const drawImage = async (ctx, image_path, dx, dy, width, height) => {
   return {
     widthSubtrator: width - image.width * scale,
   };
-};
-
-module.exports = {
-  Meetup,
 };
