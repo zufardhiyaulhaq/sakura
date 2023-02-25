@@ -1,6 +1,6 @@
 const { registerFont, createCanvas } = require("canvas");
 const { writeFileSync } = require("fs");
-const { Meetup } = require("./builder");
+const { Meetup } = require("../builder");
 
 const generate = (meetupConfig, styleConfig, outputFile) => {
   for (font of styleConfig.fontFamily.fonts) {

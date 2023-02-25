@@ -24,6 +24,11 @@ speakers:
   company: "Gojek"
   title: "Istio Mesh 101"
   image_path: "./example/images/speakers/speaker1.png"
+- name: "Dina Setyo"
+  position: "Cloud Platform Engineer"
+  company: "Gojek"
+  title: "Istio Mesh 101"
+  image_path: "./example/images/speakers/speaker1.png"
 organizers:
 - name: Cloud Native Indonesia
   image_path: "./example/images/organizers/cloud-native-indonesia-text.png"

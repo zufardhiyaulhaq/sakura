@@ -1,6 +1,6 @@
 const { program, Option } = require("commander");
-const { generate } = require("./src/sakura");
-const { getMeetupConfig } = require("./src/config");
+const { generate } = require("./src/cmd/generate");
+const { getMeetupConfig } = require("./src/configs/configs");
 const { Style } = require("./src/styles/styles");
 
 program
