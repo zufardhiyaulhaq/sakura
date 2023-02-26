@@ -2,20 +2,12 @@
 
 Sakura is a service for automating poster creation for community meetups! With this service, you can easily create beautiful and professional-looking posters for your events without the need for any design skills.
 
+## Getting Started
+
 Sakura supports both CLI-based (local) and server-based usage, making it flexible for different scenarios. If you prefer to use the service locally on your own computer, you can simply install the CLI version and start generating posters right away. On the other hand, if you need to generate posters for multiple events or collaborate with others, you can use the server-based version that can be accessed from anywhere with an internet connection.
 
-### CLI Getting Started
-- get all of the dependencies
-```
-$ npm install
-```
-- populate all the information in the meetup.yaml and copy the required image for sponsors and speakers
-- to generate the poster, run
-```
-$ ts-node index.ts generate --meetup-config ./example/meetup.yaml --output-file ./example/meetup.png
-```
-
 You can see all available options with
+
 ```
 $ ts-node index.ts --help
 Usage: sakura [options] [command]
@@ -32,17 +24,38 @@ Commands:
   help [command]      display help for command
 ```
 
-### Server Getting Started
+### Client-side
+
 - get all of the dependencies
+
 ```
 $ npm install
 ```
+
+- populate all the information in the meetup.yaml and copy the required image for sponsors and speakers
+- to generate the poster, run
+
+```
+$ ts-node index.ts generate --meetup-config ./example/meetup.yaml --output-file ./example/meetup.png
+```
+
+### Server-side
+
+- get all of the dependencies
+
+```
+$ npm install
+```
+
 - populate all the required environment variable, please check .env.example
 - run the server
+
 ```
 ts-node index.ts server
 ```
+
 - try to generate the poster
+
 ```
 curl --location --request POST 'http://0.0.0.0:3000/v1/generate' \
 --header 'accept: application/json' \
@@ -81,7 +94,23 @@ curl --location --request POST 'http://0.0.0.0:3000/v1/generate' \
     }
 }'
 ```
+
 - Open the swagger for more information
+
 ```
 http://0.0.0.0:3000/api-docs
 ```
+
+## Style
+
+Sakura define a poster style into 3 categories:
+
+1. Layout
+2. Colour Combination
+3. Font Family
+
+You can combine the categories depends on your use cases. Please check this table for all of the available option for each category.
+
+| Layout         | Colour Combination | Font Family |
+| -------------- | ------------------ | ----------- |
+| flayer_potrait | teal               | opensans    |
