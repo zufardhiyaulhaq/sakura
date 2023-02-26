@@ -184,6 +184,8 @@ export interface v1GenerateRequest {
  */
 export interface v1GenerateResponse {
   image_url: string;
+  response_code: number;
+  error_message: string;
 }
 
 export const getMeetupConfig = function (configPath: string): MeetupConfig {

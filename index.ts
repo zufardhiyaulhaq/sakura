@@ -1,6 +1,6 @@
 import { program, Option } from "commander";
 import { generate } from "./src/cmd/generate";
-import { getMeetupConfig } from "./src/configs/configs";
+import { getMeetupConfig } from "./src/models/models";
 import { Style } from "./src/styles/styles";
 import { start } from "./src/cmd/server";
 import { getSettings } from "./src/settings/settings"

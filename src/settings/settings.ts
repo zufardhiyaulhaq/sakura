@@ -2,6 +2,7 @@ import * as env from "env-var";
 
 export enum ImageHosting {
   minio = "minio",
+  github = "github",
 }
 export interface Settings {
   sakuraServerIP: string;
@@ -11,6 +12,11 @@ export interface Settings {
   sakuraMinioSecretKey: string;
   sakuraMinioEndpoint: string;
   sakuraMinioPort: number;
+  SakuraMinioBucket: string;
+  SakuraGithubUsername: string;
+  SakuraGithubToken: string;
+  SakuraGithubRepository: string;
+  SakuraGithubDirectory: string;
 }
 
 export const getSettings = function (): Settings {
@@ -28,7 +34,7 @@ export const getSettings = function (): Settings {
   settings.sakuraImageHosting = env
     .get("SAKURA_IMAGE_HOSTING")
     .required()
-    .asEnum<ImageHosting>([ImageHosting.minio]);
+    .asEnum<ImageHosting>([ImageHosting.minio, ImageHosting.github]);
 
   if (settings.sakuraImageHosting == ImageHosting.minio) {
     settings.sakuraMinioAccessKey = env
@@ -50,6 +56,33 @@ export const getSettings = function (): Settings {
       .get("SAKURA_MINIO_PORT")
       .required()
       .asPortNumber();
+
+      settings.SakuraMinioBucket = env
+      .get("SAKURA_MINIO_BUCKET")
+      .required()
+      .asString();
+  }
+
+  if (settings.sakuraImageHosting == ImageHosting.github) {
+    settings.SakuraGithubUsername = env
+      .get("SAKURA_GITHUB_USERNAME")
+      .required()
+      .asString();
+
+    settings.SakuraGithubToken = env
+      .get("SAKURA_GITHUB_TOKEN")
+      .required()
+      .asString();
+
+      settings.SakuraGithubRepository = env
+      .get("SAKURA_GITHUB_REPOSITORY")
+      .required()
+      .asString();
+
+      settings.SakuraGithubDirectory = env
+      .get("SAKURA_GITHUB_DIRECTORY")
+      .required()
+      .asString();
   }
 
   return settings;
