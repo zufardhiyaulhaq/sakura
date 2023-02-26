@@ -3,7 +3,7 @@
     "outDir": "./dist",
     "allowJs": true,
     "target": "es5",
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "include": ["./src/**/*", "src/cmd/server.ts"],
 }

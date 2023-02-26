@@ -1,9 +1,9 @@
 import { program, Option } from "commander";
-import { generate } from "./src/cmd/generate";
-import { getMeetupConfig } from "./src/models/models";
-import { Style } from "./src/styles/styles";
-import { start } from "./src/cmd/server";
-import { getSettings } from "./src/settings/settings"
+import { generate } from "./cmd/generate";
+import { getMeetupConfig } from "./models/models";
+import { Style } from "./styles/styles";
+import { start } from "./cmd/server";
+import { getSettings } from "./settings/settings"
 
 program
   .name("sakura")

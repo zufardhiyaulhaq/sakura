@@ -9,7 +9,7 @@ Sakura supports both CLI-based (local) and server-based usage, making it flexibl
 You can see all available options with
 
 ```
-$ ts-node index.ts --help
+$ ts-node src/sakura.ts --help
 Usage: sakura [options] [command]
 
 Automate community poster creation
@@ -36,7 +36,7 @@ $ npm install
 - to generate the poster, run
 
 ```
-$ ts-node index.ts generate --meetup-config ./example/meetup.yaml --output-file ./example/meetup.png
+$ ts-node src/sakura.ts generate --meetup-config ./example/meetup.yaml --output-file ./example/meetup.png
 ```
 
 ### Server-side
@@ -51,13 +51,13 @@ $ npm install
 - run the server
 
 ```
-ts-node index.ts server
+$ ts-node src/sakura.ts server
 ```
 
 - try to generate the poster
 
 ```
-curl --location --request POST 'http://0.0.0.0:3000/v1/generate' \
+$ curl --location --request POST 'http://0.0.0.0:3000/v1/generate' \
 --header 'accept: application/json' \
 --header 'Content-Type: application/json' \
 --data-raw '{
