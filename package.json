@@ -2,13 +2,13 @@
   "name": "sakura",
   "version": "1.0.0",
   "description": "A tools to generate meetup poster",
-  "main": "src/app.ts",
+  "main": "src/sakura.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zufardhiyaulhaq/sakura.git"
   },
   "scripts": {
-    "start": "node dist/app.js server",
+    "start": "node dist/sakura.js server",
     "build": "tsc"
   },
   "keywords": [

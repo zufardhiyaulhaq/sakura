@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  web:
+    image: zufardhiyaulhaq/sakura
+    ports:
+      - "3000:3000"
+    environment:
+      - SAKURA_SERVER_IP=0.0.0.0
+      - SAKURA_SERVER_PORT=3000
+      - SAKURA_IMAGE_HOSTING=github
+      - SAKURA_GITHUB_USERNAME=zufardhiyaulhaq
+      - SAKURA_GITHUB_TOKEN=tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
+      - SAKURA_GITHUB_REPOSITORY=sakura-repository
+      - SAKURA_GITHUB_DIRECTORY=img
