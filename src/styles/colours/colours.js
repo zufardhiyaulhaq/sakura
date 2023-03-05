@@ -18,8 +18,18 @@ const black = {
   font: "#F5F5F7",
 };
 
+const white = {
+  background: {
+    startColor: "#F5F5F7",
+    endColor: "#F5F5F7",
+  },
+  font: "#313131",
+};
+
+
 module.exports = {
   teal,
-  black
+  black,
+  white
 };
 

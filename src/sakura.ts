@@ -25,7 +25,7 @@ program
   )
   .addOption(
     new Option("--colour-combination <combination>", "colour combination")
-      .choices(["teal", "black"])
+      .choices(["teal", "black", "white"])
       .default("black")
   )
   .addOption(
