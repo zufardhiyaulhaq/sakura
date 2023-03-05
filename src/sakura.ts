@@ -25,8 +25,8 @@ program
   )
   .addOption(
     new Option("--colour-combination <combination>", "colour combination")
-      .choices(["teal"])
-      .default("teal")
+      .choices(["teal", "black"])
+      .default("black")
   )
   .addOption(
     new Option("--meetup-config <file>", "meetup configuration file").default(

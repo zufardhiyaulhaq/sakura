@@ -1,6 +1,6 @@
 const { flayerPotrait, flayerLandscape, square, NewFlayerPotraitCanvasStyle } = require("./canvas/canvas");
 const { openSans } = require("./fonts/fonts");
-const { teal } = require("./colours/colours");
+const { teal, black } = require("./colours/colours");
 
 class Style {
   constructor() {
@@ -47,8 +47,10 @@ class Style {
       case "teal":
         this.colourCombination = teal;
         break;
+      case "black":
+        this.colourCombination = black;
       default:
-        this.colourCombination = teal;
+        this.colourCombination = black;
     }
 
     return this

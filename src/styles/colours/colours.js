@@ -9,3 +9,17 @@ const teal = {
 module.exports = {
   teal,
 };
+
+const black = {
+  background: {
+    startColor: "#313131",
+    endColor: "#313131",
+  },
+  font: "#F5F5F7",
+};
+
+module.exports = {
+  teal,
+  black
+};
+
