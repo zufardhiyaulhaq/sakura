@@ -111,6 +111,16 @@ Sakura define a poster style into 3 categories:
 
 You can combine the categories depends on your use cases. Please check this table for all of the available option for each category.
 
-| Layout         | Colour Combination | Font Family |
-| -------------- | ------------------ | ----------- |
-| flayer_potrait | teal               | opensans    |
+| Layout |
+| -------------- |
+| flayer_potrait |
+
+| Font |
+| -------------- |
+| opensans |
+
+| Colour |
+| -------------- |
+| black |
+| white |
+| teal |
